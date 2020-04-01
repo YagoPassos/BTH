@@ -1,0 +1,56 @@
+Criar packge.json -
+ npm init
+
+Metódos HTTP 
+ GET: SERVE para buscar uma informação do back-end
+ POST: Criar novas informações no back-end
+ PUT: altera um informações no back-end
+ DELETE: deleta uma informações do back-end
+
+Tipos de parametros
+
+ Query params: ?teste parametros nomeados enviados na rota após o simbolo de interrgoção e geralmente serve para filtros e paginação
+ Route Params: /teste parametros para encontrar recursos
+ Request Body: {"teste": "teste"} corpo da requisão usado pra criar e alterar recursos
+ 
+ Response serve para levar respostas a tela, ao usuario
+ para acessar paramentros do back deve se usar o Request
+
+Express - framework 
+ npm install express
+
+Routes - as rotas utilizadas no projeto
+ criar um arquivo routes.js, onde serão armazenado as rotas
+    exemplo de rota: \vvvvvv/
+    routes.post('/ongs', (request, response) =>{  ///Post significa que ira criar algo no back-end, vindo da rota '/ongs'
+        const {name, email, whatsapp, city, uf} = request.body; ///O corpo(body) da requisação, será requisitado(request) e armazenado na constante
+
+        const id = crypto.randomBytes(4).toString('HEX'); ///constante que gera um id aleatorio de 4 digitos
+
+        return response.json(); ///retorna a requisação em formato json
+    });
+
+
+Nodemon - auto restart do servidor node
+ npm install nodemon -D - instala pacote do nodemon, o -D serve para que o nodemon seja uma dependencia de desenvolvimento
+ no packge.json é importante criar o script ("start": "nodemon src/index.js"), dessa maneira ao usar o npm start, ele vai iniciar o nodemon e iniciar o index.js
+
+Knex - SQL build 
+
+ npm install sqlite3 - serve pra criar um interpretador de sqlite3
+
+ criar a pasta database e dentro a pasta migrations
+ npx knex migrate:make name_migration - serve para criar migrations
+ npx knex migrate:latest - serve pra salvar a ultima migration feita
+
+HTTP STATUS CODES
+
+Respostas de informação (100-199),
+Respostas de sucesso (200-299), 200 OK, 202 accepted
+Redirecionamentos (300-399)
+Erros do cliente (400-499) 400 bad request, 404 not found
+Erros do servidor (500-599). 500 internal server error, 502 bad gateway
+
+PAGINAÇÃO - 
+Limit - serve para limitar o numero de tabelas retornadas 
+Offset - serve indicar o numero da primeira tabela que será chamada, sendo 0 a primeira tabela
