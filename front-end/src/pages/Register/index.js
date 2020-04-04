@@ -43,10 +43,11 @@ export default function Register() {
                                    Voltar para tela de logon!
                     </Link>
                 </section>
-                <form onSubmit={handleRegister}>
-                    <input
+                <form onSubmit={handleRegister}>]
+                  <input
                         placeholder="Nome da ONG"
                         value={name}
+                       
                         onChange={e => setName(e.target.value)}
                     />
                     <input
