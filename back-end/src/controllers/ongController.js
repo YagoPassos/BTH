@@ -27,16 +27,8 @@ module.exports = {
     },
 
     async delete(request, response) {
-        const { id } = request.paramns;
-        const ong_id = request.headers.authorization;
+        const { id } = request.params;
 
-        if (incident.ong_id != ong_id){
-            return response.status(401).json({ error: 'Operation not permitted.'})
-        }
-        
         await connection('ongs').where('id', id).del();
-
-        return response.status(204).send();
-
     }
 }

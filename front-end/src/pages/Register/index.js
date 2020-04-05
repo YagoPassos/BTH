@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './style.css'
 import logoImg from '../../assets/logo.svg'
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa'
 import api from '../../services/api';
 
@@ -14,21 +14,28 @@ export default function Register() {
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
 
+    const history = useHistory();
+
+
    async function handleRegister(e) {
         e.preventDefault();
 
-        // const data ={
-            console.log({
+        const data ={
             name,
             email,
             whatsapp,
             city,
             uf,
-        })
+        }
 
-        // const response = await api.post('ongs', data);
-
-        // alert(`Seu ID de acesso: ${response}`);
+        try{
+            const response = await api.post('ongs', data);
+            alert(`Seu ID de acesso: ${response.data.id}`);
+            history.push('/');
+        }catch (err){
+            alert('Erro no cadastro, tente novamente.')
+        }
+        
     }
     return (
         <div className="register-container">
@@ -43,7 +50,7 @@ export default function Register() {
                                    Voltar para tela de logon!
                     </Link>
                 </section>
-                <form onSubmit={handleRegister}>]
+                <form onSubmit={handleRegister}>
                   <input
                         placeholder="Nome da ONG"
                         value={name}

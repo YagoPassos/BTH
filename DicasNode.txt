@@ -44,6 +44,7 @@ Knex - SQL build
  criar a pasta database e dentro a pasta migrations
  npx knex migrate:make name_migration - serve para criar migrations
  npx knex migrate:latest - serve pra salvar a ultima migration feita
+ npx knex migrate:rollback - serve para demonstar as tables
 
 HTTP STATUS CODES
 
