@@ -7,7 +7,7 @@ props - São como os atributos do HTML
     teste
 </Header>
 
-usando children, a frese teste será exibida
+usando children, a frase teste será exibida
 
 
 npm install axios - client http - resposavel por realizar chamadas para api backend
